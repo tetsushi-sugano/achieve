@@ -15,6 +15,8 @@ devise_for :users, controllers: {
     end
   end
 
+  resources :users, only: [:index]
+
   resources :poems, only: [:index, :show]
 
   root'top#index'
