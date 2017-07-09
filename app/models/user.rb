@@ -60,5 +60,18 @@ class User < ActiveRecord::Base
       update_without_password(params, *options)
     end
   end
+
+  def follow!(other_user)
+  relationships.create!(followed_id: other_user.id)
+  end
+
+#フォローしているかどうかを確認する
+def following?(other_user)
+  relationships.find_by(followed_id: other_user.id)
+end
+
+def unfollow!(other_user)
+  relationships.find_by(followed_id: other_user.id).destroy
+end
 end
 
