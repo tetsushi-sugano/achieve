@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'relationships/create'
-
-  get 'relationships/destroy'
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 devise_for :users, controllers: {
     registrations: "users/registrations",
@@ -20,8 +16,10 @@ devise_for :users, controllers: {
   end
 
   resources :users, only: [:index]
+  resources :relationships, only: [:create, :destroy]
 
   resources :poems, only: [:index, :show]
+
 
   root'top#index'
 
