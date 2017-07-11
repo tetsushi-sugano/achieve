@@ -15,7 +15,8 @@ devise_for :users, controllers: {
     end
   end
 
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show]
+
   resources :relationships, only: [:create, :destroy]
 
   resources :poems, only: [:index, :show]

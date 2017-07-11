@@ -12,6 +12,19 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   mount_uploader :avatar, AvatarUploader
 
+  def follow!(other_user)
+  relationships.create!(followed_id: other_user.id)
+  end
+
+#フォローしているかどうかを確認する
+  def following?(other_user)
+  relationships.find_by(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+  relationships.find_by(followed_id: other_user.id).destroy
+  end
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.find_by(email: auth.info.email)
 
@@ -61,18 +74,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def follow!(other_user)
-  relationships.create!(followed_id: other_user.id)
-  end
-
-  def unfollow!(other_user)
-  relationships.find_by(followed_id: other_user.id).destroy
-  end
-
-#フォローしているかどうかを確認する
-  def following?(other_user)
-  relationships.find_by(followed_id: other_user.id)
-  end
 
 end
 
