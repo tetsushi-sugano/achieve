@@ -62,6 +62,8 @@ gem 'cancan'
 
 gem 'activeresource'
 
+gem 'pusher'
+
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
