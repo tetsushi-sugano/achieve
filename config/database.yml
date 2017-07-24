@@ -24,7 +24,7 @@ default: &default
 
 development:
   <<: *default
-  database: archive_development
+  database: achieve_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -58,7 +58,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: archive_test
+  database: achieve_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: archive_production
-  username: archive
-  password: <%= ENV['ARCHIVE_DATABASE_PASSWORD'] %>
+  database: achieve_production
+  username: achieve
+  password: <%= ENV['ACHIEVE_DATABASE_PASSWORD'] %>
